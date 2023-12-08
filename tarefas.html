@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>To-do List</h1>
+          </div>
+          <div class="header-right">
+            <nav>
+              <ul>
+                <li><a href="index.html">Cadastrar</a></li>
+                <li><a href="tarefas.html">Tarefas</a></li>
+              </ul>
+            </nav>
+          </div>
+    </header>
+    <main>
+        <div class="container-todo">
+            <h1>Lista de Tarefas</h1>
+            <p style="text-align: center;">Monitore suas tarefas!</p>
+            <ul id="listaTarefas"></ul>
+            <div class="botoes-tarefa">
+                <button onclick="concluirTarefa();" id="btnConcluir">Concluir</button>
+                <button onclick="excluirTarefa();" id="btnExcluir">Excluir</button>
+            </div>        
+        </div>
+    </main>
+<script>
+    function exibirTarefas() {
+    const listaTarefas = document.getElementById('listaTarefas');
+    listaTarefas.innerHTML = '';
+    const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+        
+        tarefas.forEach((tarefa, index) => {
+        const li = document.createElement('li');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'checkbox';
+        checkbox.checked = tarefa.concluida;
+        checkbox.setAttribute('data-index', index);
+            
+        const textoTarefa = document.createTextNode(tarefa.texto);
+        li.appendChild(checkbox);
+        li.appendChild(textoTarefa);
+        listaTarefas.appendChild(li);
+
+            if (tarefa.concluida) {
+              textoTarefa.parentElement.style.textDecoration = 'line-through';
+            }
+        });
+    }
+      
+    function concluirTarefa() {
+    const checkboxes = document.querySelectorAll('#listaTarefas input[type="checkbox"]');          
+        checkboxes.forEach((checkbox, index) => {
+            if (checkbox.checked) {
+              const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+              tarefas[index].concluida = true;
+              localStorage.setItem('tarefas', JSON.stringify(tarefas));
+              exibirTarefas();
+            }
+          });
+    }
+      
+    function excluirTarefa() {
+    const checkboxes = document.querySelectorAll('#listaTarefas input[type="checkbox"]');
+        checkboxes.forEach((checkbox, index) => {
+            if (checkbox.checked) {
+              const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+              tarefas.splice(index, 1);
+              localStorage.setItem('tarefas', JSON.stringify(tarefas));
+              exibirTarefas();
+            }
+          });
+        }
+      
+        window.onload = function() {
+          exibirTarefas();
+        
+    };
+</script>
+</body>
+</html>

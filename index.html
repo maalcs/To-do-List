@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <h1>To-do List</h1>
+    </div>
+    <div class="header-right">
+        <nav>
+        <ul>
+            <li><a href="index.html">Cadastrar</a></li>
+            <li><a href="tarefas.html">Tarefas</a></li>
+        </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="container-todo">
+        <h1>Tarefas</h1>
+        <p style="text-align: center;">Melhore sua produtividade organizando suas tarefas!</p>
+        <input type="text" id="entradaTarefa" placeholder="Adicionar nova tarefa">
+        <button onclick="adicionarTarefa();">Adicionar</button>
+        <ul id="listaTarefas"></ul>      
+        <span id="mensagemCadastro"></span>
+</div>
+</main>
+<script>
+    function adicionarTarefa() {
+    const entradaTarefa = document.getElementById('entradaTarefa');
+    const listaTarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+  
+    if (entradaTarefa.value !== '') {
+      const novaTarefa = {
+        texto: entradaTarefa.value,
+        concluida: false
+      };
+      listaTarefas.push(novaTarefa);
+      localStorage.setItem('tarefas', JSON.stringify(listaTarefas));
+      entradaTarefa.value = '';
+      mensagemCadastro.innerHTML = "Tarefa cadastrada, veja <a href='tarefas.html'>aqui</a>.";
+      
+    }
+ }
+</script>
+</body>
+</html>

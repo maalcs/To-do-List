@@ -1,0 +1,122 @@
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('img/vangogh.jpg');
+    background-attachment: fixed;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #CCD7BB;
+    color: #298B93;
+    padding: 20px;
+}
+  
+h1 {
+    margin: 0;
+}
+  
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+  
+nav ul li {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+  
+nav ul li a {
+    color: #5D7150;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+  
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #298a9393;
+}
+
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .header-left,
+    .header-right {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    nav ul li {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+
+.container-todo {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+h1 {
+    text-align: center;
+    color: #5D7150;
+}
+  
+input[type="text"] {
+    width: calc(100% - 80px);
+    padding: 8px;
+    margin-bottom: 10px;
+}
+  
+button {
+    padding: 8px 15px;
+    background-color: #3E9C9C;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#listaTarefas {
+    margin-top: 20px;
+}
+  
+  ul {
+    list-style: none;
+    padding: 0;
+}
+  
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+  
+.checkbox {
+    margin-right: 10px;
+}
+
+  /* ... Seu CSS existente ... */
+
+.botoes-tarefa {
+  margin-top: 10px;
+  text-align: center;
+}
+
+  
+  
